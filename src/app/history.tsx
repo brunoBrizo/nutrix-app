@@ -1,10 +1,18 @@
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView className="flex flex-1">
-      <Text>History</Text>
-    </SafeAreaView>
+    <View className="flex-1" style={{ paddingTop: insets.top }}>
+      <View className="px-4 py-6">
+        <Text className="text-2xl font-bold mb-4">History</Text>
+        <Text className="text-gray-600">
+          Your activity history will appear here.
+        </Text>
+      </View>
+    </View>
   );
 }

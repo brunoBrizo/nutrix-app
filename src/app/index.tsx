@@ -1,13 +1,22 @@
 import { Link } from "expo-router";
 import React from "react";
-import { SafeAreaView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function Page() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <SafeAreaView className="flex flex-1">
+    <ScrollView
+      className="flex-1"
+      contentContainerStyle={{
+        paddingBottom: insets.bottom,
+        flexGrow: 1,
+      }}
+    >
       <Header />
       <Content />
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -71,9 +80,11 @@ function Content() {
 }
 
 function Header() {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View>
-      <View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between ">
+    <View style={{ paddingTop: insets.top }}>
+      <View className="px-4 lg:px-6 h-14 flex items-center flex-row justify-between">
         <Link className="font-bold flex-1 items-center justify-center" href="/">
           PAPAFAM
         </Link>
